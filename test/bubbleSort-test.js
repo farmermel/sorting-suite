@@ -18,8 +18,8 @@ describe('bubbleSort', function() {
   })
 
   it('should sort an array of letters alphabetically', function() {
-    let arr = ['b', 'a', 'w', 'z'];
-    let sortedArr = ['a', 'b', 'w', 'z'];
+    let arr = ['b', 'f', 'i', 'a', 'c', 'g', 'h', 'e', 'd'];
+    let sortedArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
 
     expect(bubble(arr)).to.deep.equal(sortedArr);
   })
