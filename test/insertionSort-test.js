@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const insertion = require('../insertion-sort.js');
 
-describe.only('insertionSort', function() {
+describe('insertionSort', function() {
   it('should exist', function() {
     expect(true).to.equal(true);
   })
