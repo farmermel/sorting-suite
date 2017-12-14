@@ -1,5 +1,14 @@
-const { expect } = require('chai');
-const bubble = require('../bubbleSort.js');
+const { expect } = require('chai').use(require("chai-sorted"))
+const bubble = require('../lib/bubbleSort.js');
+
+function generateRandomNumbers( count, maxVal ) {
+  const array = [];
+  
+  for (let i = 0; i < count; i++) {
+    array.push(Math.floor(Math.random() * maxVal));
+  }
+  return array;
+}
 
 describe('bubbleSort', function() {
   it('to exist', function() {
@@ -12,16 +21,26 @@ describe('bubbleSort', function() {
 
   it('should sort an array of numbers', function() {
     let arr = [3, 6, 1, 10, 2, 9, 8];
-    let sortedArr = [1, 2, 3, 6, 8, 9, 10];
 
-    expect(bubble(arr)).to.deep.equal(sortedArr);
+    expect(bubble(arr)).to.be.sorted();
+  })
+
+  it('should sort an array of numbers that include negatives', function() {
+    let arr = [-1, -5, 1, -8, 9, 10, -2, 3];
+
+    expect(bubble(arr)).to.be.sorted();
   })
 
   it('should sort an array of letters alphabetically', function() {
     let arr = ['b', 'f', 'i', 'a', 'c', 'g', 'h', 'e', 'd'];
-    let sortedArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
 
-    expect(bubble(arr)).to.deep.equal(sortedArr);
+    expect(bubble(arr)).to.be.sorted();
+  })
+
+  it('should sort a pretty big array', function() {
+    let arr = generateRandomNumbers(9000, 100);
+
+    expect(bubble(arr)).to.be.sorted();
   })
   
 })
